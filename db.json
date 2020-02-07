@@ -1,0 +1,31 @@
+{
+   "pages": [
+     { 
+        "id": 1, 
+        "title": "This is the page 1", 
+        "author": "user1", 
+        "creation-date":"1995-12-17T03:24:00",
+        "modification-date":"1998-12-17T03:24:00",
+        "media":"media1.mp3",
+        "media-type":"audio",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+   ],
+
+   "comments": [
+     { 
+        "id": 1, 
+        "body": "some comment", 
+        "pageId": 1,
+        "creation-date":"1995-12-17T03:24:00",
+        "modification-date":"1998-12-17T03:24:00"
+      }
+   ],
+
+   "users": [
+      { 
+         "id": 1,
+         "name": "user1" 
+      }
+   ]
+ }
