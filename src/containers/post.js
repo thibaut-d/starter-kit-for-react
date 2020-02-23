@@ -21,12 +21,7 @@ function Post(props) {
     }
   }
 
-  return (
-    <div>
-      Post number : {id}
-      {renderPostContent()}
-    </div>
-  );
+  return <div>{renderPostContent()}</div>;
 }
 
 const mapStateToProps = state => {
