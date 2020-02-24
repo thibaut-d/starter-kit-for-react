@@ -9,8 +9,14 @@ export default function PostListItem(props) {
         <Link to={`post/${post.id}`}>{post.title}</Link>
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={() => deletePost(post)}>
+          Delete
+        </button>
       </td>
     </tr>
   );
+
+  function deletePost(post) {
+    props.deletePostCallBack(post);
+  }
 }

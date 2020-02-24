@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { bindActionsCreators, bindActionCreators } from "redux";
-import { readAllPost } from "../actions/index";
+import { bindActionCreators } from "redux";
+import { readAllPost, deletePost } from "../actions/index";
 import PostListItem from "../components/post-list-item";
 
 function PostList(props) {
@@ -9,11 +9,24 @@ function PostList(props) {
     props.readAllPost();
   }, []);
 
+  // The callback call deletePost, which is a Redux action
+  function deletePostCallBack(post) {
+    props.deletePost(post.id);
+  }
+
   function renderPosts() {
     const { posts } = props;
     if (posts) {
       return posts.map(post => {
-        return <PostListItem key={posts.id} post={post} />;
+        return (
+          <PostListItem
+            key={posts.id}
+            post={post}
+            // This is a callback, to make the kid able to call a function in the parent.
+            // Doc : https://reactjs.org/docs/lifting-state-up.html
+            deletePostCallBack={post => deletePostCallBack(post)}
+          />
+        );
       });
     }
   }
@@ -41,7 +54,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({ readAllPost }, dispatch)
+  ...bindActionCreators({ readAllPost, deletePost }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);
